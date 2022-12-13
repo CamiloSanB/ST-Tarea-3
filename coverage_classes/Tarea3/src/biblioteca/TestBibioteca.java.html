@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>TestBibioteca.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">biblioteca (13-12-2022 02:46:50)</a> &gt; <a href="../../index.html" class="el_group">Tarea3</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">biblioteca</a> &gt; <span class="el_source">TestBibioteca.java</span></div><h1>TestBibioteca.java</h1><pre class="source lang-java linenums">package biblioteca;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+<span class="fc" id="L12">public class TestBibioteca {</span>
+	Biblioteca biblioteca;
+
+	@BeforeEach
+	public void initBiblioteca() {
+<span class="fc" id="L17">		List&lt;Libro&gt; libros = new ArrayList&lt;Libro&gt;();</span>
+<span class="fc" id="L18">		String titulo = &quot;DUNE&quot;;</span>
+<span class="fc" id="L19">		String[] autores = new String[1];</span>
+<span class="fc" id="L20">		autores[0] = &quot;Frank Herbert&quot;;</span>
+<span class="fc" id="L21">		Calendar fecha = Calendar.getInstance();</span>
+<span class="fc" id="L22">		fecha.set(Calendar.YEAR, 2022);</span>
+<span class="fc" id="L23">		fecha.set(Calendar.MONTH, Calendar.APRIL);</span>
+<span class="fc" id="L24">		fecha.set(Calendar.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L25">		int numero_paginas = 782;</span>
+<span class="fc" id="L26">		String editorial = &quot;DEBOLSILLO&quot;;</span>
+<span class="fc" id="L27">		String genero = &quot;Ciencia Ficción&quot;;</span>
+<span class="fc" id="L28">		String isbn = &quot;978-987-725-411-2&quot;;</span>
+<span class="fc" id="L29">		Ubicacion ubicacion = new Ubicacion(1,1, 5, 15,10);</span>
+<span class="fc" id="L30">		String descripcion = &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;</span>
+<span class="fc" id="L31">		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);</span>
+<span class="fc" id="L32">		libros.add(libro1);</span>
+		
+<span class="fc" id="L34">		String titulo2 = &quot;A Song of Ice and Fire I&quot;;</span>
+<span class="fc" id="L35">		String[] autore2 = new String[1];</span>
+<span class="fc" id="L36">		autore2[0] = &quot;George R.R. Martin&quot;;</span>
+		//Calendar fech2 = Calendar.getInstance();
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
+<span class="fc" id="L41">		int numero_paginas2 = 795;</span>
+<span class="fc" id="L42">		String editorial2 = &quot;DEBOLSILLO&quot;;</span>
+<span class="fc" id="L43">		String genero2 = &quot;Fantasía&quot;;</span>
+<span class="fc" id="L44">		String isbn2 = &quot;978-987-725-147-0&quot;;</span>
+<span class="fc" id="L45">		Ubicacion ubicacion2 = new Ubicacion(1,3, 1, 30,50);</span>
+<span class="fc" id="L46">		String descripcion2 = &quot;En el legendario mundo de los Siete Reinos, donde el verano puede durar&quot;;</span>
+<span class="fc" id="L47">		Libro libro2 = new Libro(titulo2, autore2, fecha, numero_paginas2, editorial2, genero2, isbn2, ubicacion2, descripcion2);</span>
+<span class="fc" id="L48">		libros.add(libro2);</span>
+		
+<span class="fc" id="L50">		biblioteca = new Biblioteca(libros);</span>
+<span class="fc" id="L51">	}</span>
+	
+	@Test 
+	public void test_getLibros() {
+<span class="fc" id="L55">		String esperado = &quot;0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;+
+				&quot;1) A Song of Ice and Fire I. Por George R.R. Martin. Fecha de Edición: 1-4-2022. Número de páginas: 795&quot;+
+				&quot;. Editorial: DEBOLSILLO. Género: Fantasía. ISBN: 978-987-725-147-0.&quot;+
+				&quot; Ubicación piso: 1; número de pasillo: 3; estante: 1; posición: (30, 50). Estado: disponible. Descripción: &quot;+
+				&quot;En el legendario mundo de los Siete Reinos, donde el verano puede durar\n&quot;;
+<span class="fc" id="L63">		assertEquals(esperado, biblioteca.getLibros());</span>
+<span class="fc" id="L64">	}</span>
+	
+	@Test
+	public void test_getLibrosPorAutor() {
+		//Se crea un nuevo libro con el mismo autor de uno de los libros por defecto.
+<span class="fc" id="L69">		String titulo = &quot;DUNE 2&quot;;</span>
+<span class="fc" id="L70">		String[] autores = new String[1];</span>
+<span class="fc" id="L71">		autores[0] = &quot;Frank Herbert&quot;;</span>
+<span class="fc" id="L72">		Calendar fecha = Calendar.getInstance();</span>
+<span class="fc" id="L73">		fecha.set(Calendar.YEAR, 2022);</span>
+<span class="fc" id="L74">		fecha.set(Calendar.MONTH, Calendar.APRIL);</span>
+<span class="fc" id="L75">		fecha.set(Calendar.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L76">		int numero_paginas = 782;</span>
+<span class="fc" id="L77">		String editorial = &quot;DEBOLSILLO&quot;;</span>
+<span class="fc" id="L78">		String genero = &quot;Ciencia Ficción&quot;;</span>
+<span class="fc" id="L79">		String isbn = &quot;978-987-725-411-2&quot;;</span>
+<span class="fc" id="L80">		Ubicacion ubicacion = new Ubicacion(1,1, 5, 15,10);</span>
+<span class="fc" id="L81">		String descripcion = &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;</span>
+<span class="fc" id="L82">		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);</span>
+		
+<span class="fc" id="L84">		biblioteca.addLibro(libro1);</span>
+		
+<span class="fc" id="L86">		String esperado = &quot;0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;+
+				&quot;2) DUNE 2. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;;
+		
+<span class="fc" id="L95">		String autor_buscado = &quot;Frank Herbert&quot;;</span>
+<span class="fc" id="L96">		assertEquals(esperado, biblioteca.buscarPorAutor(autor_buscado));//busqueda exacta</span>
+<span class="fc" id="L97">		assertEquals(esperado, biblioteca.buscarPorAutor(&quot;Frank&quot;));//si contiene</span>
+		
+<span class="fc" id="L99">		assertEquals(&quot;No se ha encontrado libros de ese Autor.&quot;, biblioteca.buscarPorAutor(&quot;Personaje que no existe&quot;));</span>
+<span class="fc" id="L100">	}</span>
+	
+	@Test
+	public void test_getLibrosPorTitulo() {
+<span class="fc" id="L104">		String titulo = &quot;DUNE&quot;;</span>
+<span class="fc" id="L105">		String[] autores = new String[1];</span>
+<span class="fc" id="L106">		autores[0] = &quot;Frank Herbert hijo&quot;;</span>
+<span class="fc" id="L107">		Calendar fecha = Calendar.getInstance();</span>
+<span class="fc" id="L108">		fecha.set(Calendar.YEAR, 2022);</span>
+<span class="fc" id="L109">		fecha.set(Calendar.MONTH, Calendar.APRIL);</span>
+<span class="fc" id="L110">		fecha.set(Calendar.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L111">		int numero_paginas = 782;</span>
+<span class="fc" id="L112">		String editorial = &quot;DEBOLSILLO&quot;;</span>
+<span class="fc" id="L113">		String genero = &quot;Ciencia Ficción&quot;;</span>
+<span class="fc" id="L114">		String isbn = &quot;978-987-725-411-2&quot;;</span>
+<span class="fc" id="L115">		Ubicacion ubicacion = new Ubicacion(1,1, 5, 15,10);</span>
+<span class="fc" id="L116">		String descripcion = &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;</span>
+<span class="fc" id="L117">		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);</span>
+<span class="fc" id="L118">		biblioteca.addLibro(libro1);</span>
+		
+<span class="fc" id="L120">		String esperado = &quot;0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;+
+				&quot;2) DUNE. Por Frank Herbert hijo. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;;
+		
+<span class="fc" id="L129">		assertEquals(esperado, biblioteca.buscarPorTitulo(&quot;DUNE&quot;));</span>
+<span class="fc" id="L130">		assertEquals(esperado, biblioteca.buscarPorTitulo(&quot;DU&quot;));</span>
+<span class="fc" id="L131">		assertEquals(&quot;No se ha encontrado libros con ese título.&quot;, biblioteca.buscarPorTitulo(&quot;Libro que no existe&quot;));</span>
+<span class="fc" id="L132">	}</span>
+	
+	@Test public void test_getLibrosPorISBN() {
+<span class="fc" id="L135">		String titulo = &quot;DUNE 2&quot;;</span>
+<span class="fc" id="L136">		String[] autores = new String[1];</span>
+<span class="fc" id="L137">		autores[0] = &quot;Frank Herbert hijo&quot;;</span>
+<span class="fc" id="L138">		Calendar fecha = Calendar.getInstance();</span>
+<span class="fc" id="L139">		fecha.set(Calendar.YEAR, 2022);</span>
+<span class="fc" id="L140">		fecha.set(Calendar.MONTH, Calendar.APRIL);</span>
+<span class="fc" id="L141">		fecha.set(Calendar.DAY_OF_MONTH, 1);</span>
+<span class="fc" id="L142">		int numero_paginas = 782;</span>
+<span class="fc" id="L143">		String editorial = &quot;DEBOLSILLO&quot;;</span>
+<span class="fc" id="L144">		String genero = &quot;Ciencia Ficción&quot;;</span>
+<span class="fc" id="L145">		String isbn = &quot;978-987-725-411-2&quot;;</span>
+<span class="fc" id="L146">		Ubicacion ubicacion = new Ubicacion(1,1, 5, 15,10);</span>
+<span class="fc" id="L147">		String descripcion = &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;</span>
+<span class="fc" id="L148">		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);</span>
+<span class="fc" id="L149">		biblioteca.addLibro(libro1);</span>
+		
+<span class="fc" id="L151">		String esperado = &quot;0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;+
+				&quot;2) DUNE 2. Por Frank Herbert hijo. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más\n&quot;;
+		
+<span class="fc" id="L160">		assertEquals(esperado, biblioteca.buscarPorIsbn(&quot;978-987-725-411-2&quot;));</span>
+<span class="fc" id="L161">		assertEquals(esperado, biblioteca.buscarPorIsbn(&quot;987-725-411&quot;));</span>
+<span class="fc" id="L162">		assertEquals(&quot;No se ha encontrado libros con ese código ISBN.&quot;, biblioteca.buscarPorIsbn(&quot;ISBN que no existe&quot;));</span>
+<span class="fc" id="L163">	}</span>
+	
+	@Test
+	public void test_cambiarEstadoLibro() {
+<span class="fc" id="L167">		String esperado = &quot;DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: prestado. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L171">		biblioteca.cambiarEstadoAPrestado(0);</span>
+<span class="fc" id="L172">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+<span class="fc" id="L173">		biblioteca.cambiarEstadoAPrestado(3);</span>
+<span class="fc" id="L174">		biblioteca.cambiarEstadoAPrestado(-1);</span>
+<span class="fc" id="L175">		assertEquals(&quot;No existe libro.&quot;, biblioteca.getLibroDetalle(3));</span>
+<span class="fc" id="L176">		assertEquals(&quot;No existe libro.&quot;, biblioteca.getLibroDetalle(-1));</span>
+		
+<span class="fc" id="L178">		esperado = &quot;DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L182">		biblioteca.cambiarEstadoADisponible(0);</span>
+<span class="fc" id="L183">		biblioteca.cambiarEstadoADisponible(3);</span>
+<span class="fc" id="L184">		biblioteca.cambiarEstadoADisponible(-1);</span>
+<span class="fc" id="L185">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L187">		esperado = &quot;DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: extraviado. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L191">		biblioteca.cambiarEstadoAExtraviado(0);</span>
+<span class="fc" id="L192">		biblioteca.cambiarEstadoAExtraviado(3);</span>
+<span class="fc" id="L193">		biblioteca.cambiarEstadoAExtraviado(-1);</span>
+<span class="fc" id="L194">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+<span class="fc" id="L195">	}</span>
+	
+	@Test
+	public void test_ElminarRegistroLibro() {
+<span class="fc" id="L199">		String libro2 = biblioteca.getLibroDetalle(1); //conseguir detalle de libro2</span>
+<span class="fc" id="L200">		biblioteca.deleteLibro(0); //la posicion 0 es la de DUNE. Deberia agarrar la siguiente, que se guarda la salida en libro2</span>
+<span class="fc" id="L201">		biblioteca.deleteLibro(1);</span>
+<span class="fc" id="L202">		biblioteca.deleteLibro(-1);</span>
+<span class="fc" id="L203">		assertEquals(libro2, biblioteca.getLibroDetalle(0));</span>
+<span class="fc" id="L204">	}</span>
+	
+	@Test
+	public void test_EditarDatosLibroPorNumero() {
+<span class="fc" id="L208">		String esperado = &quot;Nuevo Titulo. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L212">		biblioteca.editarTitulo(&quot;Nuevo Titulo&quot;, 0);</span>
+<span class="fc" id="L213">		biblioteca.editarTitulo(&quot;Nuevo Titulo&quot;, 3);</span>
+<span class="fc" id="L214">		biblioteca.editarTitulo(&quot;Nuevo Titulo&quot;, -1);</span>
+<span class="fc" id="L215">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L217">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 1-4-2022. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L221">		String[] nuevos_autores = new String[2];</span>
+<span class="fc" id="L222">		nuevos_autores[0] = &quot;Frank 1&quot;;</span>
+<span class="fc" id="L223">		nuevos_autores[1] = &quot;Frank 2&quot;;</span>
+<span class="fc" id="L224">		biblioteca.editarAutor(nuevos_autores, 0);</span>
+<span class="fc" id="L225">		biblioteca.editarAutor(nuevos_autores, 3);</span>
+<span class="fc" id="L226">		biblioteca.editarAutor(nuevos_autores, -1);</span>
+<span class="fc" id="L227">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L229">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 782. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L233">		biblioteca.editarFecha(5, 5, 2020, 0);</span>
+<span class="fc" id="L234">		biblioteca.editarFecha(5, 5, 2019, 3);</span>
+<span class="fc" id="L235">		biblioteca.editarFecha(5, 5, 2021, -1);</span>
+<span class="fc" id="L236">		biblioteca.editarFecha(32, 5, 2020, 0);</span>
+<span class="fc" id="L237">		biblioteca.editarFecha(0, 5, 2020, 0);</span>
+<span class="fc" id="L238">		biblioteca.editarFecha(5, 13, 2020, 0);</span>
+<span class="fc" id="L239">		biblioteca.editarFecha(5, 0, 2020, 0);</span>
+<span class="fc" id="L240">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L242">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L246">		biblioteca.editarNumeroPaginas(600, 0);</span>
+<span class="fc" id="L247">		biblioteca.editarNumeroPaginas(600, -1);</span>
+<span class="fc" id="L248">		biblioteca.editarNumeroPaginas(600, 3);</span>
+<span class="fc" id="L249">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L251">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: Nueva Editorial. Género: Ciencia Ficción. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L255">		biblioteca.editarEditorial(&quot;Nueva Editorial&quot;, 0);</span>
+<span class="fc" id="L256">		biblioteca.editarEditorial(&quot;Nueva Editoriala&quot;, 3);</span>
+<span class="fc" id="L257">		biblioteca.editarEditorial(&quot;Nueva Editoriale&quot;, -1);</span>
+<span class="fc" id="L258">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L260">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: Nueva Editorial. Género: Nuevo Genero. ISBN: 978-987-725-411-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L264">		biblioteca.editarGenero(&quot;Nuevo Genero&quot;, 0);</span>
+<span class="fc" id="L265">		biblioteca.editarGenero(&quot;Cosa&quot;, -1);</span>
+<span class="fc" id="L266">		biblioteca.editarGenero(&quot;cosasas&quot;, 3);</span>
+<span class="fc" id="L267">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L269">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: Nueva Editorial. Género: Nuevo Genero. ISBN: 978-987-725-420-2.&quot;
+				+ &quot; Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L273">		biblioteca.editarIsbn(&quot;978-987-725-420-2&quot;, 0);</span>
+<span class="fc" id="L274">		biblioteca.editarIsbn(&quot;978-987-725-420-2321&quot;, 3);</span>
+<span class="fc" id="L275">		biblioteca.editarIsbn(&quot;978-987-725-420-4&quot;, -1);</span>
+<span class="fc" id="L276">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L278">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: Nueva Editorial. Género: Nuevo Genero. ISBN: 978-987-725-420-2.&quot;
+				+ &quot; Ubicación piso: 2; número de pasillo: 2; estante: 2; posición: (4, 11). Estado: disponible. Descripción: &quot;
+				+ &quot;En el desértico planeta Arrakis, el agua es el bien más&quot;;
+<span class="fc" id="L282">		biblioteca.editarUbicacion(2, 2, 2, 4, 11, 0);</span>
+<span class="fc" id="L283">		biblioteca.editarUbicacion(2, 2, 2, 5, 11, -1);</span>
+<span class="fc" id="L284">		biblioteca.editarUbicacion(2, 2, 2, 4, 13, 3);</span>
+<span class="fc" id="L285">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+		
+<span class="fc" id="L287">		esperado = &quot;Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 5-5-2020. Número de páginas: 600. &quot;</span>
+				+ &quot;Editorial: Nueva Editorial. Género: Nuevo Genero. ISBN: 978-987-725-420-2.&quot;
+				+ &quot; Ubicación piso: 2; número de pasillo: 2; estante: 2; posición: (4, 11). Estado: disponible. Descripción: &quot;
+				+ &quot;Nueva descripcion&quot;;
+<span class="fc" id="L291">		biblioteca.editarDescripcion(&quot;Nueva descripcion&quot;, 0);</span>
+<span class="fc" id="L292">		biblioteca.editarDescripcion(&quot;Nueva descripcioaan&quot;, -1);</span>
+<span class="fc" id="L293">		biblioteca.editarDescripcion(&quot;Nueva descripcionasd&quot;, 3);</span>
+<span class="fc" id="L294">		assertEquals(esperado, biblioteca.getLibroDetalle(0));</span>
+<span class="fc" id="L295">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>biblioteca (13-12-2022 02:46:50)</div></body></html>

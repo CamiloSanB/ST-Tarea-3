@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>Biblioteca.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">biblioteca (13-12-2022 02:46:50)</a> &gt; <a href="../../index.html" class="el_group">Tarea3</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">biblioteca</a> &gt; <span class="el_source">Biblioteca.java</span></div><h1>Biblioteca.java</h1><pre class="source lang-java linenums">package biblioteca;
+
+import java.util.Calendar;
+import java.util.List;
+
+public class Biblioteca {
+
+	private List&lt;Libro&gt; libros;
+	
+	
+	
+<span class="fc" id="L12">	public Biblioteca(List&lt;Libro&gt; libros) {</span>
+		//super();
+<span class="fc" id="L14">		this.libros = libros;</span>
+<span class="fc" id="L15">	}</span>
+
+
+	//Obtiene la lista de libros
+	public String getLibros() {
+		//String lista_libros = String.join(&quot;\n&quot;, libros.toString());
+<span class="fc" id="L21">		String lista_libros = &quot;&quot;;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">		for(int i=0; i &lt; libros.size(); i++) {</span>
+<span class="fc" id="L23">			lista_libros += i + &quot;) &quot; +libros.get(i).toString() + &quot;\n&quot;;</span>
+		}
+		//System.out.println(lista_libros);
+<span class="fc" id="L26">		return lista_libros;</span>
+	}
+	
+	//Buscar libros por autor
+	public String buscarPorAutor(String autor) {
+<span class="fc" id="L31">		String lista_libros = &quot;&quot;;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		for(int i=0; i &lt; libros.size(); i++) {</span>
+<span class="fc" id="L33">			String autor_actual = libros.get(i).getAutor();</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">			if(autor_actual.contains(autor)) {</span>
+<span class="fc" id="L35">				lista_libros += i + &quot;) &quot; +libros.get(i).toString() + &quot;\n&quot;;</span>
+			}
+		}
+<span class="fc bfc" id="L38" title="All 2 branches covered.">		if (lista_libros.isBlank()) {</span>
+<span class="fc" id="L39">			return &quot;No se ha encontrado libros de ese Autor.&quot;;</span>
+		}
+<span class="fc" id="L41">		return lista_libros;</span>
+	}
+	
+	public String buscarPorTitulo(String titulo) {
+<span class="fc" id="L45">		String lista_libros = &quot;&quot;;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		for (int i=0; i &lt; libros.size(); i++) {</span>
+<span class="fc" id="L47">			String titulo_actual = libros.get(i).getTitulo();</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">			if(titulo_actual.contains(titulo)) {</span>
+<span class="fc" id="L49">				lista_libros += i + &quot;) &quot; +libros.get(i).toString() + &quot;\n&quot;;</span>
+			}
+		}
+<span class="fc bfc" id="L52" title="All 2 branches covered.">		if (lista_libros.isBlank()) {</span>
+<span class="fc" id="L53">			return &quot;No se ha encontrado libros con ese título.&quot;;</span>
+		}
+<span class="fc" id="L55">		return lista_libros;</span>
+	}
+	
+	public String buscarPorIsbn(String isbn) {
+<span class="fc" id="L59">		String lista_libros = &quot;&quot;;</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		for (int i=0; i &lt; libros.size(); i++) {</span>
+<span class="fc" id="L61">			String isbn_actual = libros.get(i).getIsbn();</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">			if(isbn_actual.contains(isbn)) {</span>
+<span class="fc" id="L63">				lista_libros += i + &quot;) &quot; +libros.get(i).toString() + &quot;\n&quot;;</span>
+			}
+		}
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (lista_libros.isBlank()) {</span>
+<span class="fc" id="L67">			return &quot;No se ha encontrado libros con ese código ISBN.&quot;;</span>
+		}
+<span class="fc" id="L69">		return lista_libros;</span>
+	}
+	
+	//Registrar/Agregar libro
+	public void addLibro(Libro libro) {
+<span class="fc" id="L74">		libros.add(libro);</span>
+<span class="fc" id="L75">	}</span>
+	
+	public String getLibroDetalle(int numero) {
+<span class="fc bfc" id="L78" title="All 4 branches covered.">		if(libros.size() &gt; numero &amp;&amp; numero &gt;-1) {</span>
+<span class="fc" id="L79">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L80">			return libro.toString();</span>
+		}
+		else {
+<span class="fc" id="L83">			return &quot;No existe libro.&quot;;</span>
+		}
+	}
+	
+	//Editar estado de libro por su posicion
+	public void cambiarEstadoAPrestado(int numero) {
+<span class="fc bfc" id="L89" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt;-1) {</span>
+<span class="fc" id="L90">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L91">			libro.setEstadoPrestado();</span>
+		}
+<span class="fc" id="L93">	}</span>
+	public void cambiarEstadoADisponible(int numero) {
+<span class="fc bfc" id="L95" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt;-1) {</span>
+<span class="fc" id="L96">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L97">			libro.setEstadoDisponible();</span>
+		}
+<span class="fc" id="L99">	}</span>
+	public void cambiarEstadoAExtraviado(int numero) {
+<span class="fc bfc" id="L101" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt;-1) {</span>
+<span class="fc" id="L102">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L103">			libro.setEstadoExtraviado();</span>
+		}
+<span class="fc" id="L105">	}</span>
+	
+	public void deleteLibro(int numero) {
+<span class="fc bfc" id="L108" title="All 4 branches covered.">		if(libros.size() &gt; numero &amp;&amp; numero &gt;-1) {</span>
+<span class="fc" id="L109">			libros.remove(numero);</span>
+		}
+<span class="fc" id="L111">	}</span>
+
+	//Metodos para cambiar datos de libros por su numero
+	public void editarTitulo(String nuevo_titulo, int numero) {
+<span class="fc bfc" id="L115" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1){</span>
+<span class="fc" id="L116">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L117">			libro.setTitulo(nuevo_titulo);</span>
+		}
+<span class="fc" id="L119">	}</span>
+	public void editarAutor(String[] nuevo_autor, int numero) {
+<span class="fc bfc" id="L121" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L122">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L123">			libro.setAutor(nuevo_autor);</span>
+		}
+<span class="fc" id="L125">	}</span>
+	public void editarFecha(int dia, int mes, int ano, int numero) {
+<span class="fc bfc" id="L127" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc bfc" id="L128" title="All 8 branches covered.">			if(dia &gt; 0 &amp;&amp; dia &lt;32 &amp;&amp; mes &gt; 0 &amp;&amp; mes &lt; 13) {</span>
+<span class="fc" id="L129">				Libro libro = libros.get(numero);</span>
+<span class="fc" id="L130">				libro.setFecha(dia, mes, ano);</span>
+			}
+		}
+<span class="fc" id="L133">	}</span>
+	public void editarNumeroPaginas(int paginas, int numero) {
+<span class="fc bfc" id="L135" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L136">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L137">			libro.setNumero_paginas(paginas);</span>
+		}
+<span class="fc" id="L139">	}</span>
+	public void editarEditorial(String editorial, int numero) {
+<span class="fc bfc" id="L141" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L142">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L143">			libro.setEditorial(editorial);</span>
+		}
+<span class="fc" id="L145">	}</span>
+	public void editarGenero(String genero, int numero) {
+<span class="fc bfc" id="L147" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L148">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L149">			libro.setGenero(genero);</span>
+		}
+<span class="fc" id="L151">	}</span>
+	public void editarIsbn(String isbn, int numero) {
+<span class="fc bfc" id="L153" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L154">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L155">			libro.setIsbn(isbn);</span>
+		}
+<span class="fc" id="L157">	}</span>
+	public void editarUbicacion(int piso, int numero_pasillo, int estante, int x, int y, int numero) {
+<span class="fc bfc" id="L159" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L160">			Ubicacion nueva_ubicacion = new Ubicacion(piso, numero_pasillo, estante, x, y);</span>
+<span class="fc" id="L161">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L162">			libro.setUbicacion(nueva_ubicacion);</span>
+			
+		}
+<span class="fc" id="L165">	}</span>
+	public void editarDescripcion(String descripcion, int numero) {
+<span class="fc bfc" id="L167" title="All 4 branches covered.">		if(libros.size()&gt;numero &amp;&amp; numero &gt; -1) {</span>
+<span class="fc" id="L168">			Libro libro = libros.get(numero);</span>
+<span class="fc" id="L169">			libro.setDescripcion(descripcion);</span>
+		}
+<span class="fc" id="L171">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span>biblioteca (13-12-2022 02:46:50)</div></body></html>

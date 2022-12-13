@@ -1,9 +1,14 @@
-package biblioteca;
+package demo;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
+import biblioteca.Biblioteca;
+import biblioteca.Libro;
+import biblioteca.Ubicacion;
 
 public class Aplicacion {
 
@@ -12,6 +17,7 @@ public class Aplicacion {
 		List<Libro> libros_aux = new ArrayList<Libro>();
 		Biblioteca biblioteca = new Biblioteca(libros_aux);
 		
+		//Carga de datos
 		String titulo3 = "DUNE";
 		String[] autores3 = new String[1];
 		autores3[0] = "Frank Herbert";
@@ -38,6 +44,7 @@ public class Aplicacion {
 		biblioteca.addLibro(libro2);
 		
 		Scanner input = new Scanner(System.in);
+		//variable int que guarda los ingresos de tipo entero del usuario.
 		int input_menu = 0;
 		
 		while (input_menu != 6) {
@@ -51,8 +58,15 @@ public class Aplicacion {
 			System.out.println("\t6. Salir\n");
 			
 			System.out.print("Ingrese el número de la opción a usar: ");
-			input_menu = input.nextInt();
-			input.nextLine();
+			try {
+				input_menu = input.nextInt();
+				input.nextLine();
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Ingreso inválido. Solo enteros.");
+				input.nextLine();
+				input_menu = 0;
+			}
 			
 			//Registrar Libro
 			if(input_menu == 1) {
@@ -62,8 +76,20 @@ public class Aplicacion {
 				String titulo = input.nextLine();
 				
 				System.out.print("Cantidad de autores: ");
-				input_menu = input.nextInt();
-				input.nextLine();
+				try {
+					input_menu = input.nextInt();
+					input.nextLine();
+					if(input_menu < 1) {
+						System.out.println("Debe existir al menos un autor. Volviendo al menu principal.");
+						continue;
+					}
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				if(input_menu >0) {
 					String[] autores = new String[input_menu];
 					for(int i=0; i < input_menu; i++) {
@@ -74,17 +100,50 @@ public class Aplicacion {
 					}
 				System.out.println("Fecha de la edición (ingrese el número correspondiente");
 				System.out.print("Año: ");
-				int year = input.nextInt();
-				input.nextLine();
+				int year, mes, dia, n_paginas;
+				try {
+					year = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Mes: ");
-				int mes = input.nextInt();
-				input.nextLine();
+				try {
+					mes = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Día: ");
-				int dia = input.nextInt();
-				input.nextLine();
+				try {
+					dia = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Número de páginas: ");
-				int n_paginas = input.nextInt();
-				input.nextLine();
+				try {
+					n_paginas = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Editorial: ");
 				String editorial = input.nextLine();
 				System.out.print("Género: ");
@@ -92,21 +151,62 @@ public class Aplicacion {
 				System.out.print("Código ISBN: ");
 				String isbn = input.nextLine();
 				System.out.println("A continuación, ingrese el número de los detalles de la ubicación del libro");
+				int piso, n_pasillo, estante, x, y;
 				System.out.print("Piso de la biblioteca: ");
-				int piso = input.nextInt();
-				input.nextLine();
+				try {
+					piso = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Número de pasillo: ");
-				int n_pasillo = input.nextInt();
-				input.nextLine();
+				try {
+					n_pasillo = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Número de estante: ");
-				int estante = input.nextInt();
-				input.nextLine();
+				try {
+					estante = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Posicion x: ");
-				int x = input.nextInt();
-				input.nextLine();
+				try {
+					x = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Posicion y: ");
-				int y = input.nextInt();
-				input.nextLine();
+				try {
+					y = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				System.out.print("Descripción: ");
 				String descripcion = input.nextLine();
 				
@@ -128,8 +228,16 @@ public class Aplicacion {
 				System.out.println("3) Por código ISBN");
 				System.out.println("4) Menú principal");
 				System.out.print("Ingrese número de opción: ");
-				input_menu = input.nextInt();
-				input.nextLine();
+				try {
+					input_menu = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				if(input_menu == 1) {
 					System.out.print("Ingrese titulo a buscar: ");
 					String titulo = input.nextLine();
@@ -161,12 +269,29 @@ public class Aplicacion {
 				System.out.println("1) Editar por ID");
 				System.out.println("2 u otra) Regresar");
 				System.out.print("Ingrese opcion: ");
-				input_menu = input.nextInt();
-				input.nextLine();
+				try {
+					input_menu = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				if(input_menu==1) {
 					System.out.print("Ingrese id: ");
-					int id = input.nextInt();
-					input.nextLine();
+					int id;
+					try {
+						id = input.nextInt();
+						input.nextLine();
+					}
+					catch(InputMismatchException e) {
+						System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+						input.nextLine();
+						input_menu = 0;
+						continue;
+					}
 					System.out.println(biblioteca.getLibroDetalle(id));
 					System.out.println("1) Titulo");
 					System.out.println("2) Autor(es)");
@@ -179,8 +304,16 @@ public class Aplicacion {
 					System.out.println("9) Descripción");
 					System.out.println("10 u otra) Volver a menu principal");
 					System.out.print("Ingrese opción: ");
-					input_menu = input.nextInt();
-					input.nextLine();
+					try {
+						input_menu = input.nextInt();
+						input.nextLine();
+					}
+					catch(InputMismatchException e) {
+						System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+						input.nextLine();
+						input_menu = 0;
+						continue;
+					}
 					if(input_menu==1) {
 						System.out.print("Nuevo Titulo: ");
 						String nuevo_titulo = input.nextLine();
@@ -188,8 +321,21 @@ public class Aplicacion {
 					}
 					else if(input_menu==2) {
 						System.out.print("Cantidad de autores: ");
-						int n_autores = input.nextInt();
-						input.nextLine();
+						int n_autores;
+						try {
+							n_autores = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
+						if(n_autores <1) {
+							System.out.println("Debe haber al menos un autor. Volviendo a menu principal.");
+							continue;
+						}
 						String[] autores = new String[n_autores];
 						for(int i=0; i<n_autores; i++) {
 							int i_aux = i +1;
@@ -200,21 +346,55 @@ public class Aplicacion {
 						biblioteca.editarAutor(autores, id);
 					}
 					else if(input_menu == 3) {
+						int year, mes, dia;
 						System.out.print("Año: ");
-						int year = input.nextInt();
-						input.nextLine();
+						try {
+							year = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Mes: ");
-						int mes = input.nextInt();
-						input.nextLine();
+						try {
+							mes = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Día: ");
-						int dia = input.nextInt();
-						input.nextLine();
+						try {
+							dia = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						biblioteca.editarFecha(dia, mes, year, id);
 					}
 					else if(input_menu==4) {
 						System.out.print("Cantidad de paginas: ");
-						int n_paginas = input.nextInt();
-						input.nextLine();
+						int n_paginas;
+						try {
+							n_paginas = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						biblioteca.editarNumeroPaginas(n_paginas, id);
 					}
 					else if(input_menu==5) {
@@ -233,21 +413,62 @@ public class Aplicacion {
 						biblioteca.editarIsbn(isbn, id);
 					}
 					else if(input_menu==8) {
+						int piso, n_pasillo, estante, x, y;
 						System.out.print("Piso de la biblioteca: ");
-						int piso = input.nextInt();
-						input.nextLine();
+						try {
+							piso = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Número de pasillo: ");
-						int n_pasillo = input.nextInt();
-						input.nextLine();
+						try {
+							n_pasillo = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Número de estante: ");
-						int estante = input.nextInt();
-						input.nextLine();
+						try {
+							estante = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Posicion x: ");
-						int x = input.nextInt();
-						input.nextLine();
+						try {
+							x = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						System.out.print("Posicion y: ");
-						int y = input.nextInt();
-						input.nextLine();
+						try {
+							y = input.nextInt();
+							input.nextLine();
+						}
+						catch(InputMismatchException e) {
+							System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+							input.nextLine();
+							input_menu = 0;
+							continue;
+						}
 						biblioteca.editarUbicacion(piso, n_pasillo, estante, x, y, id);
 					}
 					else if(input_menu==9) {
@@ -262,12 +483,29 @@ public class Aplicacion {
 				System.out.println("1) Eliminar por ID");
 				System.out.println("2 u otra) Regresar");
 				System.out.print("Ingrese opcion: ");
-				input_menu = input.nextInt();
-				input.nextLine();
+				try {
+					input_menu = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				if(input_menu==1) {
 					System.out.print("Ingrese id de registro a eliminar: ");
-					int id = input.nextInt();
-					input.nextLine();
+					int id;
+					try {
+						id = input.nextInt();
+						input.nextLine();
+					}
+					catch(InputMismatchException e) {
+						System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+						input.nextLine();
+						input_menu = 0;
+						continue;
+					}
 					System.out.println("Eliminando " + biblioteca.getLibroDetalle(id));
 					biblioteca.deleteLibro(id);
 					System.out.println("Eliminado");
@@ -280,20 +518,45 @@ public class Aplicacion {
 				System.out.println("1) Cambio de estado por ID");
 				System.out.println("2 u otra) Regresar");
 				System.out.print("Ingrese opcion: ");
-				input_menu = input.nextInt();
-				input.nextLine();
+				try {
+					input_menu = input.nextInt();
+					input.nextLine();
+				}
+				catch(InputMismatchException e) {
+					System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+					input.nextLine();
+					input_menu = 0;
+					continue;
+				}
 				if(input_menu==1) {
 					System.out.print("Ingrese id de registro a cambiar de estado: ");
-					int id = input.nextInt();
-					input.nextLine();
+					int id;
+					try {
+						id = input.nextInt();
+						input.nextLine();
+					}
+					catch(InputMismatchException e) {
+						System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+						input.nextLine();
+						input_menu = 0;
+						continue;
+					}
 					System.out.println("Cambiando de estado de " + biblioteca.getLibroDetalle(id));
 					System.out.println("1) Cambio a disponible");
 					System.out.println("2) Cambio a prestado");
 					System.out.println("3) Cambio a extraviado");
 					System.out.println("4 u otra) Regresar");
 					System.out.print("Ingrese opcion: ");
-					input_menu = input.nextInt();
-					input.nextLine();
+					try {
+						input_menu = input.nextInt();
+						input.nextLine();
+					}
+					catch(InputMismatchException e) {
+						System.out.println("Ingreso inválido. Solo enteros. Volviendo al menu principal.");
+						input.nextLine();
+						input_menu = 0;
+						continue;
+					}
 					if(input_menu==1) {
 						System.out.println("Cambiado a estado: disponible.");
 						biblioteca.cambiarEstadoADisponible(id);
@@ -313,11 +576,14 @@ public class Aplicacion {
 			if(input_menu==6) {
 				break;
 			}
+			else {
+				System.out.println("Entrada inválida.");
+			}
 			
 		}
 		
-		System.out.println("Saliendo...");
 		input.close();
+		System.out.println("Ejecución terminada...");
 		
 
 	}

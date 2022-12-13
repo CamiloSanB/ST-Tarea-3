@@ -19,9 +19,10 @@ public class TestBibioteca {
 		String[] autores = new String[1];
 		autores[0] = "Frank Herbert";
 		Calendar fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2022);
-		fecha.set(Calendar.MONTH, Calendar.APRIL);
-		fecha.set(Calendar.DAY_OF_MONTH, 1);
+		fecha.set(2022, 3, 1);
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
 		int numero_paginas = 782;
 		String editorial = "DEBOLSILLO";
 		String genero = "Ciencia Ficción";
@@ -52,11 +53,11 @@ public class TestBibioteca {
 	
 	@Test 
 	public void test_getLibros() {
-		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n"+
-				"1) A Song of Ice and Fire I. Por George R.R. Martin. Fecha de Edición: 1-4-2022. Número de páginas: 795"+
+				"1) A Song of Ice and Fire I. Por George R.R. Martin. Fecha de Edición: 1-3-2022. Número de páginas: 795"+
 				". Editorial: DEBOLSILLO. Género: Fantasía. ISBN: 978-987-725-147-0."+
 				" Ubicación piso: 1; número de pasillo: 3; estante: 1; posición: (30, 50). Estado: disponible. Descripción: "+
 				"En el legendario mundo de los Siete Reinos, donde el verano puede durar\n";
@@ -70,9 +71,10 @@ public class TestBibioteca {
 		String[] autores = new String[1];
 		autores[0] = "Frank Herbert";
 		Calendar fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2022);
-		fecha.set(Calendar.MONTH, Calendar.APRIL);
-		fecha.set(Calendar.DAY_OF_MONTH, 1);
+		fecha.set(2022, 3, 1);
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
 		int numero_paginas = 782;
 		String editorial = "DEBOLSILLO";
 		String genero = "Ciencia Ficción";
@@ -83,11 +85,11 @@ public class TestBibioteca {
 		
 		biblioteca.addLibro(libro1);
 		
-		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n"+
-				"2) DUNE 2. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+				"2) DUNE 2. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n";
@@ -105,9 +107,10 @@ public class TestBibioteca {
 		String[] autores = new String[1];
 		autores[0] = "Frank Herbert hijo";
 		Calendar fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2022);
-		fecha.set(Calendar.MONTH, Calendar.APRIL);
-		fecha.set(Calendar.DAY_OF_MONTH, 1);
+		fecha.set(2022, 3, 1);
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
 		int numero_paginas = 782;
 		String editorial = "DEBOLSILLO";
 		String genero = "Ciencia Ficción";
@@ -117,11 +120,11 @@ public class TestBibioteca {
 		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);
 		biblioteca.addLibro(libro1);
 		
-		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n"+
-				"2) DUNE. Por Frank Herbert hijo. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+				"2) DUNE. Por Frank Herbert hijo. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n";
@@ -136,9 +139,10 @@ public class TestBibioteca {
 		String[] autores = new String[1];
 		autores[0] = "Frank Herbert hijo";
 		Calendar fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2022);
-		fecha.set(Calendar.MONTH, Calendar.APRIL);
-		fecha.set(Calendar.DAY_OF_MONTH, 1);
+		fecha.set(2022, 3, 1);
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
 		int numero_paginas = 782;
 		String editorial = "DEBOLSILLO";
 		String genero = "Ciencia Ficción";
@@ -148,11 +152,11 @@ public class TestBibioteca {
 		Libro libro1 = new Libro(titulo, autores, fecha, numero_paginas, editorial, genero, isbn, ubicacion, descripcion);
 		biblioteca.addLibro(libro1);
 		
-		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "0) DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n"+
-				"2) DUNE 2. Por Frank Herbert hijo. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+				"2) DUNE 2. Por Frank Herbert hijo. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más\n";
@@ -164,7 +168,7 @@ public class TestBibioteca {
 	
 	@Test
 	public void test_cambiarEstadoLibro() {
-		String esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: prestado. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más";
@@ -175,7 +179,7 @@ public class TestBibioteca {
 		assertEquals("No existe libro.", biblioteca.getLibroDetalle(3));
 		assertEquals("No existe libro.", biblioteca.getLibroDetalle(-1));
 		
-		esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más";
@@ -184,7 +188,7 @@ public class TestBibioteca {
 		biblioteca.cambiarEstadoADisponible(-1);
 		assertEquals(esperado, biblioteca.getLibroDetalle(0));
 		
-		esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		esperado = "DUNE. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: extraviado. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más";
@@ -205,7 +209,7 @@ public class TestBibioteca {
 	
 	@Test
 	public void test_EditarDatosLibroPorNumero() {
-		String esperado = "Nuevo Titulo. Por Frank Herbert. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		String esperado = "Nuevo Titulo. Por Frank Herbert. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más";
@@ -214,7 +218,7 @@ public class TestBibioteca {
 		biblioteca.editarTitulo("Nuevo Titulo", -1);
 		assertEquals(esperado, biblioteca.getLibroDetalle(0));
 		
-		esperado = "Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 1-4-2022. Número de páginas: 782. "
+		esperado = "Nuevo Titulo. Por Frank 1, Frank 2. Fecha de Edición: 1-3-2022. Número de páginas: 782. "
 				+ "Editorial: DEBOLSILLO. Género: Ciencia Ficción. ISBN: 978-987-725-411-2."
 				+ " Ubicación piso: 1; número de pasillo: 1; estante: 5; posición: (15, 10). Estado: disponible. Descripción: "
 				+ "En el desértico planeta Arrakis, el agua es el bien más";

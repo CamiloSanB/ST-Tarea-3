@@ -51,7 +51,7 @@ public class Libro {
 
 	public String getFecha() {
 		int dia = fecha.get(Calendar.DAY_OF_MONTH);
-		int mes = fecha.get(Calendar.MONTH) + 1;
+		int mes = fecha.get(Calendar.MONTH);
 		int ano = fecha.get(Calendar.YEAR);
 		String fecha = dia + "-" + mes + "-" + ano;
 		return fecha;
@@ -140,7 +140,7 @@ public class Libro {
 	public void setFecha(int dia, int mes, int ano) {
 		if(dia > 0 && dia <32 && mes > 0 && mes < 13) {
 			Calendar nueva_fecha = Calendar.getInstance();
-			nueva_fecha.set(ano, mes-1, dia);
+			nueva_fecha.set(ano, mes, dia);
 			this.fecha = nueva_fecha;
 		}
 	}

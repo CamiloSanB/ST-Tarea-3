@@ -17,9 +17,10 @@ public class TestLibro {
 		String[] autores = new String[1];
 		autores[0] = "Frank Herbert";
 		Calendar fecha = Calendar.getInstance();
-		fecha.set(Calendar.YEAR, 2022);
-		fecha.set(Calendar.MONTH, Calendar.APRIL);
-		fecha.set(Calendar.DAY_OF_MONTH, 1);
+		fecha.set(2022, 4, 1);
+		//fecha.set(Calendar.YEAR, 2022);
+		//fecha.set(Calendar.MONTH, Calendar.APRIL);
+		//fecha.set(Calendar.DAY_OF_MONTH, 1);
 		int numero_paginas = 782;
 		String editorial = "DEBOLSILLO";
 		String genero = "Ciencia Ficción";

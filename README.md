@@ -7,13 +7,18 @@ El programa consiste en un programa de consola en el cual se pueden registrar li
   Camilo Sánchez Bravo
 
 # Descripción
-  Carpetas
   - ## Tarea3
     Código fuente escrito en JAVA (en subdirectorio src). El package (o directorio) "biblioteca" contiene el código fuente usados de las clases como de sus tests. Package "demo" contiene código fuente de la demo implementada, la cual viene cargada con dos registros de libros.
     - ### Instalación
       Para poder ejecutar la demo, el archivo "Aplicacion.java" del package "demo" debe ser compilado, teniendo en cuenta que utiliza el package "biblioteca".
     - ### Cómo usar
       Ejecutar archivo generado de la compilación (e.g. En consola: >>java -jar Aplicacion.jar) e interactuar por consola según las opciones e instrucciones.
+  - ## coverage_classes
+    Reporte de cobertura del packag "biblioteca" en HTML. Obtenido mediante la exportación de este.
+    - ### Instalación
+      No necesita instalación.
+    - ### Cómo usar
+      Abrir archivo "index.html" para comenzar a navegar a través del reporte generado.
 
 # ¿Cómo contribuir?
   No se aceptan contribuciones sobre nuevas funcionalidades y/o extensiones de los programas. Dado por la naturaleza del repositorio, sí se aceptan fallas y errores encontrandos en el funcionamiento de los programas, así como mejoras en el código.

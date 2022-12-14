@@ -7,6 +7,8 @@ El programa consiste en un programa de consola en el cual se pueden registrar li
   Camilo Sánchez Bravo
 
 # Descripción
+  Se presenta a continuación la descripción de cada directorio principal.
+
   - ## Tarea3
     Código fuente escrito en JAVA (en subdirectorio src). El package (o directorio) "biblioteca" contiene el código fuente usados de las clases como de sus tests. Package "demo" contiene código fuente de la demo implementada, la cual viene cargada con dos registros de libros.
     - ### Instalación
